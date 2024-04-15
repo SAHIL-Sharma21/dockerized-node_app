@@ -1,0 +1,21 @@
+# writng docker-compose for running multiple container 
+
+version: '3.8'
+
+# writng services as postgres and redis 
+services:
+  postgres:
+    image: postgres #image will come from docker hub
+    ports:
+      - 5432:5432
+    environment:
+       POSTGRES_USER: postgres
+       POSTGRES_DB: test
+       POSTGRES_PASSWORD: password
+
+
+  redis:
+    image: redis
+    ports:
+      - 6379:6379
+
