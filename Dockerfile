@@ -11,10 +11,13 @@ RUN apt-get install -y nodejs
 # copying our local code to in image s source and destination 
 COPY package.json package.json
 COPY package-lock.json package-lock.json
-COPY index.js index.js
 
-# run npm i to insatll node modules in our image 
+# run npm i to insatll node modules in our image >> when there is change in package.json or package-lock.json
 RUN npm install
+
+COPY index.js index.js
+#we can also use copy . . if we have bigger files
+
 
 # running our app with below cmd as our entrypoint 
 ENTRYPOINT [ "node", "index.js" ]
